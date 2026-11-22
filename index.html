@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PySQL Lab · 数据开发的 Python 闯关</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">Py</div>
+    <div class="brand-txt">
+      <h1>PySQL Lab</h1>
+      <p>数据开发版 Python 闯关 · 每个知识点都配 <b>SQL 对照</b>，浏览器里跑真 Python</p>
+    </div>
+  </div>
+  <div class="hud">
+    <div class="stat"><span id="xpNum">0</span><label>经验</label></div>
+    <div class="stat"><span id="doneNum">0/55</span><label>已通关</label></div>
+    <div class="engine" id="engine"><i class="dot"></i><span id="engineTxt">Python 引擎未加载</span></div>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-head">
+      <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
+      <div class="prog-note"><span id="progTxt">0%</span><button id="resetAll" title="清空本机进度与代码">清空进度</button></div>
+    </div>
+    <nav id="stageList"></nav>
+  </aside>
+
+  <section class="stage" id="stage">
+    <div class="crumbs" id="crumbs">选择一个关卡开始</div>
+
+    <div class="level-head">
+      <h2 id="levelTitle">—</h2>
+      <p id="levelSub"></p>
+    </div>
+
+    <div class="card lesson-card">
+      <h3 class="card-title">讲解</h3>
+      <div class="md" id="lessonBody"></div>
+    </div>
+
+    <div class="card compare-card" id="compareCard">
+      <h3 class="card-title">🆚 SQL 对照 <span class="card-hint">左边 SQL 可以点「试跑」，右边是 Python 写法</span></h3>
+      <div class="tabs">
+        <button class="tab active" data-tab="sql">SQL</button>
+        <button class="tab" data-tab="py">Python</button>
+      </div>
+      <div class="tab-pane" id="paneSql">
+        <div class="sql-bar">
+          <span class="sql-tag">演示库 demo.db</span>
+          <button class="mini-btn" id="runSqlBtn">▶ 试跑这条 SQL</button>
+        </div>
+        <pre class="code sql-code" id="sqlCode"></pre>
+        <div class="sql-result" id="sqlResult"></div>
+      </div>
+      <div class="tab-pane hidden" id="panePy">
+        <pre class="code py-code" id="pyCode"></pre>
+      </div>
+      <div class="compare-note" id="compareNote"></div>
+    </div>
+
+    <div class="card task-card">
+      <h3 class="card-title">📝 任务</h3>
+      <div class="md" id="taskBody"></div>
+    </div>
+
+    <div class="card editor-card">
+      <div class="editor-toolbar">
+        <button class="btn primary" id="runBtn">▶ 运行</button>
+        <button class="btn submit" id="submitBtn">✓ 提交判题</button>
+        <button class="btn ghost" id="hintBtn">提示</button>
+        <button class="btn ghost" id="answerBtn">看答案</button>
+        <button class="btn ghost" id="resetBtn">重置代码</button>
+        <span class="kbd-hint">Ctrl + Enter 运行 / 提交</span>
+      </div>
+      <div class="editor-wrap">
+        <div class="gutter" id="gutter">1</div>
+        <textarea id="code" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+      </div>
+      <div class="hint-box hidden" id="hintBox"></div>
+      <div class="answer-box hidden" id="answerBox"></div>
+      <div class="console" id="console">
+        <div class="console-head"><span id="consoleState">就绪</span><button class="mini-btn" id="clearConsole">清空</button></div>
+        <pre id="consoleOut"></pre>
+      </div>
+    </div>
+
+    <div class="card data-card">
+      <h3 class="card-title">🗂 本关数据集 <span class="card-hint">全部关卡共用这一份，SQL 侧和 pandas 侧完全一致</span></h3>
+      <div class="schema" id="schema"></div>
+    </div>
+
+    <div class="pager">
+      <button class="btn ghost" id="prevBtn">← 上一关</button>
+      <button class="btn ghost" id="nextBtn">下一关 →</button>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<script src="content-basics.js"></script>
+<script src="content-python.js"></script>
+<script src="content-pandas.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
